@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import randoService from "./services/randoService"
+import React, { useState, useEffect } from "react"
 
-function App() {
+const App = () => {
+  const [randot, setRandot] = useState("")
+
+  useEffect(() => {
+    randoService
+      .getRandot()
+      .then((response) => {
+        console.log(response.data)
+        setRandot(response.data.quote)
+      })
+      .catch(() => {
+        alert("Epic fail from getRando App")
+      })
+  }, [])
+
+  const handleButton = () => {
+    randoService
+      .getRandot()
+      .then((response) => {
+        setRandot(response.data.quote)
+      })
+      .catch(() => {
+        alert("Epic fail from getRandot ")
+      })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="ml-5 mt-5">
+        <b>Kanye Quotes</b>
+      </h1>
+      <div className="box1 d-flex flex-column align-items-center justify-content-around">
+        <div className="box2 styles p-4 d-flex justify-content-center align-items-center">
+          {randot}
+        </div>
+        <br />
+        <div className="d-flex justify-content-center flex-end">
+          <button className="button styles" onClick={handleButton}>
+            Random
+          </button>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
