@@ -8,7 +8,6 @@ body {
   height: 90vh;
   background-color: black;
   color: #66fcf1;
-  /* width: ; */
 }
 
 code {
@@ -21,8 +20,8 @@ code {
 }
 
 .box2 {
-  height: 20rem;
-  width: 50rem;
+  height: 40%;
+  width: 60%;
   font-size: 1.45rem;
   margin-top: 5rem;
 }
@@ -35,8 +34,9 @@ code {
   text-align: center;
 }
 .button {
-  height: 4.25rem;
-  width: 9rem;
+  outline: none;
+  height: 25%;
+  width: 100%;
   background-color: black;
   font-size: 1.45rem;
   padding: 7px;
